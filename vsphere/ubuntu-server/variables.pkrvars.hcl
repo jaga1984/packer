@@ -1,0 +1,8 @@
+vsphere_server     = "10.60.15.149"
+vsphere_username   = "administrator@vsphere.local"
+vsphere_password   = "Asdf1234$"
+vsphere_datacenter = "DC-InterLabIT-DR-PRU"
+vsphere_cluster    = "CL-DL360-G9"
+vsphere_datastore  = "153.datastore1"
+vsphere_network    = "D-PG7-V-60-Infra"
+vsphere_folder     = "F-Templates"
