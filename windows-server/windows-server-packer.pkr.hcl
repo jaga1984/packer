@@ -59,7 +59,7 @@ source "vmware-iso" "windows_server" {
   boot_command       = ["<enter>"]
   shutdown_command   = "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\""
   shutdown_timeout   = "15m"
-  
+    
   # Answer File Configuration
   floppy_files       = [
     "./answer_files/autounattend.xml",
@@ -73,20 +73,20 @@ source "vmware-iso" "windows_server" {
 build {
   sources = ["source.vmware-iso.windows_server"]
   
-  # Initial Setup
-  #provisioner "powershell" {
-  #  script = "./scripts/initial-setup.ps1"
-  #}
+  #Initial Setup
+  provisioner "powershell" {
+    script = "./scripts/initial-setup.ps1"
+  }
   
   # Windows Updates
-  provisioner "windows-update" {
-    search_criteria = "IsInstalled=0"
-    filters = [
-      "exclude:$_.Title -like '*Preview*'",
-      "include:$true"
-    ]
-    update_limit = 25
-  }
+  #provisioner "windows-update" {
+  #  search_criteria = "IsInstalled=0"
+  #  filters = [
+  #    "exclude:$_.Title -like '*Preview*'",
+  #    "include:$true"
+  #  ]
+  #  update_limit = 25
+  #}
   
   # Install Features
   #provisioner "powershell" {
