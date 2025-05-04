@@ -40,8 +40,8 @@ source "vmware-iso" "windows_server" {
     "ide1:0.startConnected"            = "FALSE"
     "ide1:0.clientDevice"              = "TRUE"
     "ethernet0.present"                = "TRUE"
-    "ethernet0.connectionType"         = "nat"
-    "ethernet0.virtualDev"             = "vmxnet3"
+    "ethernet0.connectionType"         = "bridget"
+    "ethernet0.virtualDev"             = "e1000"
     "ethernet0.addressType"            = "generated"
     "RemoteDisplay.vnc.enabled"        = "FALSE"
     "vhv.enable"                       = "FALSE"
@@ -49,10 +49,13 @@ source "vmware-iso" "windows_server" {
 
   # Windows Configuration
   communicator        = "winrm"
-  winrm_username      = "Administrator"
+  winrm_host          = ""
+  winrm_username      = "user_account"
   winrm_password      = "Asdf1234$"  # Change this!
-  winrm_timeout      = "15m"
-  winrm_insecure     = true
+  winrm_timeout       = "10m"
+  winrm_use_ssl       = "false"
+  winrm_insecure      = "true"
+  winrm_port          = 5985
   
   # Boot and Shutdown Configuration
   boot_wait          = "3s"
@@ -65,7 +68,7 @@ source "vmware-iso" "windows_server" {
     "./answer_files/autounattend.xml",
     "./scripts/winrmConfig.bat",
     #"./scripts/disable-winrm.ps1",
-    #"./scripts/enable-winrm.ps1",
+    "./scripts/enable-winrm.ps1",
     #"./scripts/microsoft-updates.ps1"
   ]
 }

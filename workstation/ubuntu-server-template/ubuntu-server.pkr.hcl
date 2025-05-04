@@ -37,7 +37,7 @@ source "vmware-iso" "ubuntu" {
   
   // ISO Settings
   iso_url          = "https://releases.ubuntu.com/jammy/ubuntu-22.04.5-live-server-amd64.iso"
-  iso_checksum     = "sha256:a4acfda10b18da50e2ec50ccaf860d7f20b389df8765611142305c0e911d16fd"
+  iso_checksum     = "sha256:9bc6028870aef3f74f4e16b900008179e78b130e6b0b9a140635434a46aa98b0"
   
   // Boot and Provisioning Settings
   http_directory    = "http"
@@ -61,7 +61,7 @@ source "vmware-iso" "ubuntu" {
   
   // VMware Workstation Settings
   vmx_data = {
-    "virtualHW.version"              = "19"
+    "virtualHW.version"              = "21"
     "mks.enable3d"                   = "TRUE"
     "pciBridge0.present"             = "TRUE"
     "pciBridge4.present"             = "TRUE"
@@ -77,11 +77,10 @@ source "vmware-iso" "ubuntu" {
     "pciBridge7.virtualDev"          = "pcieRootPort"
     "pciBridge7.functions"           = "8"
     "ethernet0.pciSlotNumber"        = "32"
-    "ethernet0.present"              = "TRUE"
-    "ethernet0.virtualDev"           = "vmxnet3"
     "ethernet0.connectionType"       = "nat"
     "ethernet0.addressType"          = "generated"
-    "ethernet0.wakeonpcktrcv"        = "FALSE"
+    "ethernet0.virtualDev"           = "e1000"
+    "ethernet0.present"              = "TRUE"
     "scsi0.virtualDev"              = "pvscsi"
     "scsi0.present"                 = "TRUE"
     "scsi0:0.present"               = "TRUE"
